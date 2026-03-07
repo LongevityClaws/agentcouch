@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0A0A0A;
+  --accent: #C4F135;
+  --secondary: #1A1A2E;
+  --text: #E8E8E8;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
+/* Grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(196, 241, 53, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196, 241, 53, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Accent glow */
+.accent-glow {
+  box-shadow: 0 0 80px rgba(196, 241, 53, 0.15), 0 0 160px rgba(196, 241, 53, 0.05);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

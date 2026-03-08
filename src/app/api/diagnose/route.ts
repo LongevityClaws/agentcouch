@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import Anthropic from "@anthropic-ai/sdk";
 import { redis, tokenKey, freeUsageKey, type TokenData } from "@/lib/redis";
 
 const anthropic = new Anthropic();
@@ -106,15 +105,30 @@ export async function POST(req: NextRequest) {
         ? `Analyse this agent definition and return the JSON diagnosis. After the JSON, on a new line, output "---REWRITE---" followed by a complete rewritten/improved version of the agent definition.\n\n${soul}`
         : `Analyse this agent definition and return the JSON diagnosis.\n\n${soul}`;
 
-    const message = await anthropic.messages.create({
-      model: "claude-3-5-haiku-20241022",
-      max_tokens: 4096,
-      system: SYSTEM_PROMPT,
-      messages: [{ role: "user", content: userPrompt }],
+    const orRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://agentcouch.com",
+        "X-Title": "AgentCouch",
+      },
+      body: JSON.stringify({
+        model: "anthropic/claude-3.5-haiku",
+        max_tokens: 4096,
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: userPrompt },
+        ],
+      }),
     });
 
-    const text =
-      message.content[0].type === "text" ? message.content[0].text : "";
+    if (!orRes.ok) {
+      throw new Error(`OpenRouter error: ${orRes.status}`);
+    }
+
+    const orData = await orRes.json();
+    const text: string = orData.choices?.[0]?.message?.content ?? "";
 
     let diagnosis;
     let rewrite: string | undefined;

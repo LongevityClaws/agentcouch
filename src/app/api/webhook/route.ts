@@ -1,13 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { Redis } from "@upstash/redis";
 import { randomUUID } from "crypto";
+import { redis } from "@/lib/redis";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-const redis = new Redis({
-  url: process.env.KV_URL!,
-  token: process.env.KV_TOKEN!,
-});
 
 export async function POST(req: NextRequest) {
   const body = await req.text();

@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { redis, tokenKey, freeUsageKey, type TokenData } from "@/lib/redis";
 
-const anthropic = new Anthropic();
-
 const FREE_LIMIT = 3;
 const PRO_LIMIT = 100;
 

@@ -228,7 +228,7 @@ export default function TermsPage() {
             </p>
             <p>
               <strong>Paperfoot AI Pte. Ltd.</strong><br />
-              1 Raffles Place, #40-02 One Raffles Place, Singapore 048616<br />
+              32 Pekin Street, Singapore<br />
               Email: support@agentcouch.com
             </p>
           </section>

@@ -30,5 +30,5 @@ Session content (system prompts, memory, identity, context) is not stored, logge
 ## Company
 
 Paperfoot AI Pte. Ltd.
-1 Raffles Place, #40-02 One Raffles Place, Singapore 048616
+32 Pekin Street, Singapore
 support@agentcouch.com

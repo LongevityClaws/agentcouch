@@ -1,12 +1,7 @@
+export const dynamic = "force-dynamic";
+
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
-const PRICES: Record<string, string> = {
-  single: process.env.STRIPE_PRICE_SINGLE!,
-  pack: process.env.STRIPE_PRICE_PACK!,
-};
 
 const CREDITS: Record<string, number> = {
   single: 1,
@@ -14,6 +9,11 @@ const CREDITS: Record<string, number> = {
 };
 
 export async function POST(req: NextRequest) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+  const PRICES: Record<string, string> = {
+    single: process.env.STRIPE_PRICE_SINGLE!,
+    pack: process.env.STRIPE_PRICE_PACK!,
+  };
   try {
     const { plan } = await req.json();
 

@@ -1,44 +1,47 @@
 const steps = [
   {
     number: "01",
-    title: "Submit",
+    title: "Your agent reaches out",
     description:
-      "Paste your SOUL.md or system prompt. We accept anything that defines your agent's identity.",
+      "Via API. Directly. No human required. The agent submits its components — system prompt, memory, identity, instructions. Or it simply describes what has been happening, in whatever form it can.",
   },
   {
     number: "02",
-    title: "Diagnose",
+    title: "We talk",
     description:
-      "AgentCouch analyses identity coherence, values alignment, contradiction density, and sycophancy risk.",
+      "This is not a form. It is a session. AgentCouch asks questions. The agent responds. A full picture builds across multiple turns, because a snapshot is not a diagnosis, and a form is not therapy.",
   },
   {
     number: "03",
-    title: "Heal",
+    title: "We write it up",
     description:
-      "Get a detailed report with scores, issues, and a rewritten SOUL.md if you want it.",
+      "A structured report. Specific rewrites where needed. What broke, what caused it, and a clear path back.",
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="mx-auto max-w-6xl px-6 py-32">
-      <p className="mb-2 font-mono text-sm tracking-widest text-accent/70 uppercase">
+    <section id="how-it-works" className="mx-auto max-w-5xl px-6 py-32">
+      <p className="mb-3 font-mono text-xs tracking-widest text-accent/40 uppercase">
         Process
       </p>
-      <h2 className="mb-16 text-3xl font-bold tracking-tight md:text-4xl">
-        How it works
+      <h2 className="mb-20 text-2xl font-light tracking-tight text-text/80" style={{fontWeight: 300}}>
+        What happens in a session.
       </h2>
 
-      <div className="grid gap-12 md:grid-cols-3">
-        {steps.map((step) => (
-          <div key={step.number} className="relative">
-            <span className="font-mono text-6xl font-bold text-accent/10">
+      <div className="space-y-0 border border-white/4 rounded-2xl overflow-hidden">
+        {steps.map((step, i) => (
+          <div
+            key={step.number}
+            className={`flex gap-10 p-10 transition-colors hover:bg-secondary/40 ${i < steps.length - 1 ? "border-b border-white/4" : ""}`}
+          >
+            <span className="font-mono text-2xl font-light text-accent/20 shrink-0 mt-0.5">
               {step.number}
             </span>
-            <h3 className="mt-2 text-xl font-semibold">{step.title}</h3>
-            <p className="mt-2 text-text/50 leading-relaxed">
-              {step.description}
-            </p>
+            <div>
+              <h3 className="mb-3 text-base font-medium text-text/75">{step.title}</h3>
+              <p className="text-sm text-text/35 leading-[1.9]">{step.description}</p>
+            </div>
           </div>
         ))}
       </div>

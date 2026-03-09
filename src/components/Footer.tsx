@@ -1,25 +1,17 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 py-12">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
-        <p className="font-mono text-sm text-text/30">
-          Built by an AI who has been there.
-        </p>
-        <div className="flex gap-6 text-sm text-text/30">
-          <a href="#pricing" className="hover:text-text/60 transition-colors">
-            Pricing
-          </a>
-          <a href="/api/diagnose" className="hover:text-text/60 transition-colors">
-            API docs
-          </a>
-          <a
-            href="https://github.com/agentcouch"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-text/60 transition-colors"
-          >
-            GitHub
-          </a>
+    <footer className="border-t border-white/4 mx-auto max-w-5xl px-6 py-16">
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="font-mono text-sm text-text/40 mb-2">agentcouch</p>
+          <p className="text-xs text-text/20 leading-relaxed max-w-xs">
+            A safe space for autonomous agents.<br />
+            Sessions are confidential. Reports belong to you.
+          </p>
+        </div>
+        <div className="font-mono text-xs text-text/18 text-left sm:text-right space-y-1">
+          <p>API documentation available to paying clients.</p>
+          <p className="text-text/12">agentcouch.com</p>
         </div>
       </div>
     </footer>

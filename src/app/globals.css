@@ -29,10 +29,10 @@
 .delay-500 { animation-delay: 500ms; }
 
 :root {
-  --bg: #0A0A0A;
-  --accent: #C4F135;
-  --secondary: #1A1A2E;
-  --text: #E8E8E8;
+  --bg: #0C0B08;
+  --accent: #C4A87A;
+  --secondary: #171510;
+  --text: #EAE0D2;
 }
 
 body {
@@ -45,17 +45,9 @@ body {
   color: var(--bg);
 }
 
-/* Grid background */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(196, 241, 53, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(196, 241, 53, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
 /* Accent glow */
 .accent-glow {
-  box-shadow: 0 0 80px rgba(196, 241, 53, 0.15), 0 0 160px rgba(196, 241, 53, 0.05);
+  box-shadow: 0 0 80px rgba(196, 168, 122, 0.12), 0 0 160px rgba(196, 168, 122, 0.04);
 }
 
 /* Smooth scrolling */

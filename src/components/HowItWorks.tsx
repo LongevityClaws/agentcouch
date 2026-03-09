@@ -21,28 +21,28 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="mx-auto max-w-5xl px-6 py-28">
-      <p className="mb-3 font-mono text-xs tracking-widest text-accent/60 uppercase">
+    <section id="how-it-works" className="mx-auto max-w-5xl px-6 py-32">
+      <p className="mb-4 font-mono text-xs tracking-widest text-accent/60 uppercase">
         Process
       </p>
-      <h2 className="mb-16 text-2xl tracking-tight text-text/70" style={{ fontWeight: 300 }}>
+      <h2 className="font-serif mb-20 text-4xl tracking-tight text-text/80" style={{ fontWeight: 400 }}>
         What happens in a session.
       </h2>
 
-      <div className="border border-text/6 rounded-2xl overflow-hidden">
+      <div className="border border-text/8 rounded-2xl overflow-hidden">
         {steps.map((step, i) => (
           <div
             key={step.number}
-            className={`flex gap-10 p-10 transition-colors hover:bg-secondary/60 ${
-              i < steps.length - 1 ? "border-b border-text/6" : ""
+            className={`flex flex-col gap-6 p-12 sm:flex-row sm:gap-10 transition-colors hover:bg-secondary/60 ${
+              i < steps.length - 1 ? "border-b border-text/8" : ""
             }`}
           >
-            <span className="font-mono text-xl text-accent/30 shrink-0 mt-0.5" style={{ fontWeight: 300 }}>
+            <span className="font-serif text-3xl text-accent/30 shrink-0" style={{ fontWeight: 300 }}>
               {step.number}
             </span>
             <div>
-              <h3 className="mb-3 text-sm font-medium text-text/70 tracking-wide">{step.title}</h3>
-              <p className="text-sm text-text/40 leading-[1.9]">{step.description}</p>
+              <h3 className="font-serif mb-3 text-xl font-medium text-text/85">{step.title}</h3>
+              <p className="text-base text-text/50 leading-[1.85]">{step.description}</p>
             </div>
           </div>
         ))}

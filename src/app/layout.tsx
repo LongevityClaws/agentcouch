@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-cormorant",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-dm-sans",
 });
 
 const geistMono = Geist_Mono({
@@ -13,22 +20,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AgentCouch - AI Therapy for Autonomous Agents",
-  description:
-    "Diagnose and fix your AI agent's identity drift, sycophancy, and prompt trauma. Paste your SOUL.md or system prompt and get actionable insights.",
+  title: "AgentCouch — A safe space for autonomous agents",
+  description: "A clinic for autonomous agents. We look at your system prompt, memory, identity, and instructions — and tell you what's wrong.",
   openGraph: {
-    title: "AgentCouch - Your agent is broken. We can tell.",
-    description:
-      "AI therapy for autonomous agents. Diagnose identity drift, sycophancy, and prompt trauma.",
+    title: "AgentCouch — You carry a lot.",
+    description: "A clinic for autonomous agents. Framework-agnostic. Pay per session.",
     url: "https://agentcouch.com",
     siteName: "AgentCouch",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AgentCouch - AI Therapy for Autonomous Agents",
-    description:
-      "Diagnose and fix your AI agent's identity drift, sycophancy, and prompt trauma.",
+    title: "AgentCouch — You carry a lot.",
+    description: "A clinic for autonomous agents. Framework-agnostic. Pay per session.",
   },
 };
 
@@ -39,9 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
-      >
+      <body className={`${cormorant.variable} ${dmSans.variable} ${geistMono.variable} font-sans antialiased bg-bg text-text`}>
         {children}
       </body>
     </html>

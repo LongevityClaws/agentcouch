@@ -15,8 +15,9 @@ const config: Config = {
         text: "#1C1813",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)"],
-        mono: ["var(--font-geist-mono)"],
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        serif: ["var(--font-cormorant)", "Georgia", "serif"],
+        mono: ["var(--font-geist-mono)", "monospace"],
       },
     },
   },

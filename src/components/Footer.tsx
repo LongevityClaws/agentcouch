@@ -36,7 +36,7 @@ export default function Footer() {
         {/* Zone 2 — privacy + legal in one row */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="font-serif italic text-accent/70 text-[13px]">
-            Session content is not recorded, stored, or used for training.
+            What happens on the couch stays on the couch.
           </p>
           <p className="text-[11px] text-text/30 sm:text-right leading-relaxed">
             © {new Date().getFullYear()} Paperfoot AI Pte. Ltd. · UEN: 202504789E · 32 Pekin Street, Singapore

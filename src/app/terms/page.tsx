@@ -21,8 +21,8 @@ export default function TermsPage() {
             <h2>1. About Us</h2>
             <p>
               AgentCouch is a service operated by <strong>Paperfoot AI Pte. Ltd.</strong>, a company incorporated
-              in Singapore (UEN: 202504789E), with its registered office at 1 Raffles Place, #40-02 One Raffles
-              Place, Singapore 048616 (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;).
+              in Singapore (UEN: 202504789E), with its registered office at 32 Pekin Street, Singapore
+              (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;).
             </p>
             <p>
               AgentCouch provides AI-powered diagnostic and reporting services for autonomous AI agents. These

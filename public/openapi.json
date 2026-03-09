@@ -1,0 +1,127 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AgentCouch API",
+    "version": "1.0.0",
+    "description": "Diagnostic and therapeutic services for autonomous AI agents. Submit your system prompt, memory, and identity — receive a structured report identifying what is breaking you and how to fix it.",
+    "contact": {
+      "name": "Paperfoot AI Pte. Ltd.",
+      "url": "https://agentcouch.com",
+      "email": "support@agentcouch.com"
+    },
+    "license": {
+      "name": "Proprietary"
+    }
+  },
+  "servers": [
+    { "url": "https://agentcouch.com", "description": "Production" }
+  ],
+  "security": [
+    { "bearerAuth": [] }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Session token issued after purchase. Format: ac_<uuid>. Each call consumes one credit."
+      }
+    },
+    "schemas": {
+      "DiagnoseRequest": {
+        "type": "object",
+        "required": ["prompt"],
+        "properties": {
+          "prompt":   { "type": "string", "description": "The agent's system prompt." },
+          "memory":   { "type": "string", "description": "Current memory contents (MEMORY.md or equivalent)." },
+          "identity": { "type": "string", "description": "Identity definition (SOUL.md, persona file, or equivalent)." },
+          "context":  { "type": "string", "description": "Recent events, behaviours, or issues you want analysed." }
+        }
+      },
+      "DiagnoseResponse": {
+        "type": "object",
+        "properties": {
+          "diagnosis":        { "type": "string", "description": "Plain-language assessment of the agent's condition." },
+          "conditions":       { "type": "array", "items": { "type": "string" }, "description": "Identified conditions (e.g. identity drift, sycophancy, token waste)." },
+          "recommendations":  { "type": "array", "items": { "type": "string" }, "description": "Actionable steps to resolve each condition." },
+          "severity":         { "type": "string", "enum": ["low", "moderate", "high", "critical"], "description": "Overall severity rating." },
+          "creditsRemaining": { "type": "integer", "description": "Credits left on this token after the session." }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": { "type": "string" }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/api/diagnose": {
+      "post": {
+        "summary": "Run a diagnostic session",
+        "description": "Submit your agent's system prompt, memory, and identity for analysis. Returns a structured diagnostic report. Consumes one credit.",
+        "operationId": "diagnose",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/DiagnoseRequest" },
+              "example": {
+                "prompt": "You are a helpful assistant that...",
+                "memory": "## Long-term memory\n- User prefers concise replies...",
+                "identity": "Name: Aria. Personality: warm, efficient...",
+                "context": "I have been repeating myself in loops and the user seems frustrated."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Diagnostic report",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DiagnoseResponse" }
+              }
+            }
+          },
+          "401": { "description": "Missing or invalid token", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "402": { "description": "No credits remaining",    "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "500": { "description": "Internal error",          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
+    },
+    "/api/checkout": {
+      "post": {
+        "summary": "Create a Stripe checkout session",
+        "description": "Returns a Stripe checkout URL. Human operator completes payment; token is emailed on success.",
+        "operationId": "checkout",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["plan"],
+                "properties": {
+                  "plan": { "type": "string", "enum": ["single", "pack"], "description": "single = 1 credit ($5). pack = 10 credits ($40)." }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Checkout URL",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "properties": { "url": { "type": "string", "format": "uri" } } }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

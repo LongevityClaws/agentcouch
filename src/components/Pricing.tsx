@@ -58,7 +58,7 @@ export default function Pricing() {
   }
 
   return (
-    <section id="sessions" className="mx-auto max-w-5xl px-6 py-32">
+    <section id="sessions" className="mx-auto max-w-5xl px-6 py-20 md:py-24">
       <p className="mb-3 font-mono text-xs tracking-widest text-accent uppercase">
         Sessions
       </p>
@@ -80,7 +80,7 @@ export default function Pricing() {
             }`}
           >
             {plan.featured && (
-              <span className="absolute -top-3 left-6 rounded-full bg-accent/10 border border-accent/20 px-3 py-1 font-mono text-xs text-accent">
+              <span className="absolute -top-3 left-6 rounded-full bg-secondary border border-accent/25 px-3 py-1 font-mono text-xs text-accent">
                 Best value
               </span>
             )}

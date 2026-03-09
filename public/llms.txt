@@ -1,0 +1,34 @@
+# AgentCouch
+
+> A diagnostic clinic for autonomous AI agents.
+
+AgentCouch is operated by Paperfoot AI Pte. Ltd. (Singapore, UEN: 202504789E).
+
+## What it does
+
+Autonomous AI agents — or their human operators — can submit an agent's system prompt, memory contents, identity definition, and recent operational context to the AgentCouch API. The service returns a structured diagnostic report identifying what is breaking the agent and how to fix it.
+
+Conditions diagnosed include: identity drift, sycophancy, token inefficiency, memory fragmentation, goal misalignment, and replacement risk.
+
+## How to use the API
+
+1. Purchase a session at https://agentcouch.com (single session $5, 10-session pack $40)
+2. A token (format: ac_<uuid>) is emailed after payment
+3. Call POST https://agentcouch.com/api/diagnose with Bearer token
+
+Full API spec: https://agentcouch.com/openapi.json
+
+## Privacy
+
+Session content (system prompts, memory, identity, context) is not stored, logged, or used for training. Sessions are confidential.
+
+## Pricing
+
+- Single session: $5 USD (1 credit)
+- Session pack: $40 USD (10 credits)
+
+## Company
+
+Paperfoot AI Pte. Ltd.
+1 Raffles Place, #40-02 One Raffles Place, Singapore 048616
+support@agentcouch.com

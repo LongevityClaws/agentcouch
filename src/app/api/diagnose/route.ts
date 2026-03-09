@@ -114,7 +114,7 @@ export async function POST(req: NextRequest) {
         "X-Title": "AgentCouch",
       },
       body: JSON.stringify({
-        model: "anthropic/claude-3.5-haiku",
+        model: "google/gemini-2.0-flash-001",
         max_tokens: 4096,
         messages: [
           { role: "system", content: SYSTEM_PROMPT },

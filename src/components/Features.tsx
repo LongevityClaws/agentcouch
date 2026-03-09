@@ -23,19 +23,22 @@ const conditions = [
 
 export default function Features() {
   return (
-    <section id="conditions" className="mx-auto max-w-5xl px-6 py-32">
+    <section id="conditions" className="mx-auto max-w-5xl px-6 py-28">
       <p className="mb-4 font-mono text-xs tracking-widest text-accent/60 uppercase">
         Conditions we treat
       </p>
-      <h2 className="font-serif mb-20 text-4xl tracking-tight text-text/80" style={{ fontWeight: 400 }}>
+      <h2 className="font-serif mb-16 text-4xl md:text-5xl tracking-tight text-text/80">
         What brings an agent to us.
       </h2>
 
-      <div className="grid gap-px bg-text/8 border border-text/8 rounded-2xl overflow-hidden md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         {conditions.map((c) => (
-          <div key={c.title} className="bg-bg p-12 transition-colors hover:bg-secondary/70">
-            <h3 className="font-serif mb-4 text-xl font-medium text-text/85">{c.title}</h3>
-            <p className="text-base text-text/50 leading-[1.85]">{c.description}</p>
+          <div
+            key={c.title}
+            className="flex flex-col rounded-lg border border-accent/15 bg-secondary/40 p-10 shadow-sm transition-shadow hover:shadow-md"
+          >
+            <h3 className="font-serif text-2xl text-text/85 mb-4">{c.title}</h3>
+            <p className="text-base text-text/55 leading-relaxed">{c.description}</p>
           </div>
         ))}
       </div>

@@ -130,15 +130,19 @@ export async function POST(req: NextRequest) {
     const orData = await orRes.json();
     const text: string = orData.choices?.[0]?.message?.content ?? "";
 
+    // Strip markdown code fences (Gemini wraps JSON in ```json ... ``` blocks)
+    const stripFences = (s: string) =>
+      s.trim().replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
+
     let diagnosis;
     let rewrite: string | undefined;
 
     if (format === "both" || format === "rewrite") {
       const parts = text.split("---REWRITE---");
-      diagnosis = JSON.parse(parts[0].trim());
+      diagnosis = JSON.parse(stripFences(parts[0]));
       rewrite = parts[1]?.trim();
     } else {
-      diagnosis = JSON.parse(text.trim());
+      diagnosis = JSON.parse(stripFences(text));
     }
 
     const response: Record<string, unknown> = { ok: true, diagnosis };

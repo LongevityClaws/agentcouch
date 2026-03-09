@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#0A0A0A",
-        accent: "#C4F135",
-        secondary: "#1A1A2E",
-        text: "#E8E8E8",
+        bg: "#F9F6F1",
+        accent: "#8C6E4B",
+        secondary: "#F0EAE0",
+        text: "#1C1813",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],

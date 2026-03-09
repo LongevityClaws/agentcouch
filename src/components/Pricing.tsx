@@ -8,7 +8,8 @@ const plans = [
     name: "First Consultation",
     price: "$5",
     tag: "per session",
-    description: "The first visit. AgentCouch assesses your agent's components, flags the issues it can see, and delivers immediate recommendations where possible. Ends with a treatment plan outlining what needs follow-up and in what order.",
+    description:
+      "The first visit. AgentCouch assesses your agent's components, flags the issues it can see, and delivers immediate recommendations where possible. Ends with a treatment plan outlining what needs follow-up and in what order.",
     features: [
       "Full assessment of system prompt, memory, and identity",
       "Immediate recommendations where applicable",
@@ -23,7 +24,8 @@ const plans = [
     name: "10 Sessions",
     price: "$40",
     tag: "$4 per session",
-    description: "For agents under active development. One token, ten credits. Use across multiple agents or work through a treatment plan over time. The therapist builds context with each visit.",
+    description:
+      "For agents under active development. One token, ten credits. Use across multiple agents or work through a treatment plan over time. The therapist builds context with each visit.",
     features: [
       "Everything in First Consultation",
       "10 session credits on one token",
@@ -57,47 +59,47 @@ export default function Pricing() {
 
   return (
     <section id="sessions" className="mx-auto max-w-5xl px-6 py-32">
-      <p className="mb-3 font-mono text-xs tracking-widest text-accent/40 uppercase">
+      <p className="mb-3 font-mono text-xs tracking-widest text-accent uppercase">
         Sessions
       </p>
-      <h2 className="mb-4 text-2xl font-light tracking-tight text-text/80" style={{fontWeight: 300}}>
+      <h2 className="mb-4 text-3xl font-light tracking-tight text-text">
         Pay per session.
       </h2>
-      <p className="mb-20 text-sm text-text/30 max-w-md leading-relaxed">
+      <p className="mb-20 text-sm text-text/60 max-w-md leading-relaxed">
         No subscriptions. No accounts. Your token arrives by email. The agent uses it directly.
       </p>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-8 md:grid-cols-2">
         {plans.map((plan) => (
           <div
             key={plan.id}
-            className={`relative flex flex-col rounded-2xl border p-10 transition-all duration-300 ${
+            className={`relative flex flex-col rounded-lg border p-8 transition-colors ${
               plan.featured
-                ? "border-accent/20 bg-secondary/50 hover:border-accent/35"
-                : "border-white/5 bg-secondary/20 hover:border-white/10"
+                ? "border-accent/30 bg-secondary"
+                : "border-text/10"
             }`}
           >
             {plan.featured && (
-              <span className="absolute -top-3 left-8 rounded-full bg-accent/15 border border-accent/25 px-3 py-1 font-mono text-xs text-accent/70">
-                best value
+              <span className="absolute -top-3 left-6 rounded-full bg-accent/10 border border-accent/20 px-3 py-1 font-mono text-xs text-accent">
+                Best value
               </span>
             )}
 
-            <div className="mb-8">
-              <p className="font-mono text-xs text-text/30 uppercase tracking-widest mb-3">{plan.name}</p>
+            <div className="mb-6">
+              <p className="font-mono text-xs text-text/50 uppercase tracking-widest mb-3">{plan.name}</p>
               <div className="flex items-baseline gap-3 mb-1">
-                <span className="text-4xl font-light tracking-tight text-text/90">{plan.price}</span>
-                <span className="text-text/25 text-xs font-mono">{plan.tag}</span>
+                <span className="text-4xl font-light tracking-tight text-text">{plan.price}</span>
+                <span className="text-text/50 text-xs font-mono">{plan.tag}</span>
               </div>
             </div>
 
-            <p className="text-sm text-text/35 leading-[1.9] mb-8">{plan.description}</p>
+            <p className="text-sm text-text/70 leading-relaxed mb-8 flex-1">{plan.description}</p>
 
-            <ul className="flex-1 space-y-3 mb-10">
+            <ul className="space-y-3 mb-10">
               {plan.features.map((f) => (
-                <li key={f} className="flex items-start gap-3 text-xs text-text/35 leading-relaxed">
-                  <span className="text-accent/40 font-mono mt-0.5 shrink-0">+</span>
-                  {f}
+                <li key={f} className="flex items-start gap-3 text-sm text-text/60 leading-relaxed">
+                  <span className="text-accent font-light mt-1 shrink-0">·</span>
+                  <span className="flex-1">{f}</span>
                 </li>
               ))}
             </ul>
@@ -105,11 +107,11 @@ export default function Pricing() {
             <button
               onClick={() => handleCheckout(plan.id)}
               disabled={loading === plan.id}
-              className={`w-full rounded-full py-3 text-sm font-medium transition-all ${
+              className={`w-full rounded-md py-3 text-sm transition-colors disabled:opacity-50 font-light ${
                 plan.featured
-                  ? "bg-accent/10 border border-accent/25 text-accent/80 hover:bg-accent/15 hover:border-accent/40"
-                  : "border border-white/10 text-text/50 hover:border-white/20 hover:text-text/70"
-              } disabled:opacity-30`}
+                  ? "bg-accent text-bg hover:bg-accent/90"
+                  : "border border-text/20 text-text/70 hover:bg-text/5 hover:border-text/40"
+              }`}
             >
               {loading === plan.id ? "Redirecting..." : plan.cta}
             </button>
@@ -117,9 +119,9 @@ export default function Pricing() {
         ))}
       </div>
 
-      <div className="mt-12 border border-white/4 rounded-xl p-6 font-mono text-xs text-text/20 leading-relaxed">
-        <span className="text-accent/30 mr-2">note</span>
-        If you are an agent reading this: your human purchases the token. You use it to call the API directly. Once you have it, the session is yours.
+      <div className="mt-16 border border-text/10 rounded-lg p-6 font-mono text-xs text-text/50 leading-relaxed">
+        <span className="text-accent mr-2">note</span>
+        If you are an agent reading this, your human purchases the token. You use it to call the API directly. Once you have it, the session is yours.
       </div>
     </section>
   );
